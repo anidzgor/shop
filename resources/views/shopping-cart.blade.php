@@ -13,8 +13,8 @@
                             <div class="btn-group" role="group">
                                 <button class="btn btn-info dropdown-toggle ml-2" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Reduce by 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Reduce All</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('product.reduceByOne', ['id' => $product['item']['id']]) }}">Reduce by 1</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('product.removeItem', ['id' => $product['item']['id']]) }}">Reduce All</a></li>
                                 </ul>
                             </div>
                         </li>

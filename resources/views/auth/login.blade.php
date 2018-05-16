@@ -51,6 +51,10 @@
                         </a>
                     </div>
                 </div>
-            </form>
+            </form>        
+
+            <div class="col-md-6 offset-md-3">
+                <p>You dont't have a account yet?<a href="{{ route('register') }}"> Sign up</a></p>
+            </div>
     </div>
 @endsection

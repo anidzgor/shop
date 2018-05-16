@@ -5,16 +5,20 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{url('/images/mustang.jpg')}}" alt="First slide">
+              <img src="{{url('/images/accessory.jpg')}}" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img src="{{url('/images/bugatti.jpg')}}" alt="Second slide">
+              <img src="{{url('/images/classic_clothes.jpg')}}" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img src="{{url('/images/mercedes.jpeg')}}" alt="Third slide">
+              <img src="{{url('/images/clothes.jpg')}}" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url('/images/suits.jpeg')}}" alt="Fourth slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

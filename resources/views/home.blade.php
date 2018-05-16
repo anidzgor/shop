@@ -9,6 +9,15 @@
     <div class="col"></div>
 
     <div class="col-8 card">
+        @if(Session::has('success'))
+           <div class="row">
+               <div class="col-sm-6 col-md-4 offset-md-4 offset-sm-3 mt-1">
+                   <div id="charge-message" class="alert alert-success text-center">
+                       {{ Session::get('success')}}
+                   </div>
+               </div>
+          </div>
+        @endif
         <div class="row justify-content-center mt-5 mb-5">
                 <button type="button" class="btn btn-outline-primary active">All products</button>
                 <button type="button" class="btn btn-outline-primary">Clothing</button>
@@ -27,13 +36,10 @@
                     <div class="caption">
                         <h3 class="font-weight-bold">{{ $product->title }}</h3>
                         <p class="description">{{ $product->description }}</p>
-      
                           <div class="clearfix">
                             <div class="pull-left price">{{ $product->price }}</div>
                             {{-- <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right mr-3" role="button">Add to Cart</a> --}}
                             <a href="/add-to-cart/{{ $product->id }}" class="btn btn-success pull-right mr-3" role="button">Add to Cart</a>
-                            
-                        
                         </div>
                     </div>
                 </div>

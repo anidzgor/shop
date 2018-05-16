@@ -54,7 +54,7 @@
 
 <nav class="navbar second-navbar navbar-expand-md sticky-top">
         <div class="container">
-            <img src="{{url('/icons/logo.png')}}" width="15%"/>
+            <img src="{{url('/icons/logo2.png')}}" width="15%"/>
             <button class="navbar-toggler custom-toggler2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">      
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,7 +67,7 @@
                   </li>
 
                   <li class="{{Request::is('cars') ? 'active': '' }}">
-                    <a class="nav-link" href="/cars">Cars</a>
+                    <a class="nav-link" href="/cars">Products</a>
                   </li>
         
                   <li class="{{Request::is('about') ? 'active': '' }}">
