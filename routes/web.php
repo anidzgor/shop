@@ -17,13 +17,17 @@ Route::get('/about', 'PagesController@getAbout');
 
 Route::get('/contact', 'PagesController@getContact');
 
+Route::get('/products', 'PagesController@getProducts');
+
 Route::post('/contact/submit', 'MessagesController@submit');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/add-to-cart/{id}','ProductController@getAddToCart');
+Route::get('/products/{id}','ProductController@show')->name('products.show');
+
+Route::get('/add-to-cart/{id}','ProductController@getAddToCart')->name('product.addToCart');
 
 Route::get('/reduce/{id}', 'ProductController@getReduceByOne')->name('product.reduceByOne');
 

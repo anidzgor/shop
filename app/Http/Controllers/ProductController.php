@@ -15,6 +15,30 @@ use Stripe\Customer;
 
 class ProductController extends Controller
 {
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) {
+        $product = Product::find($id);
+
+        $sizes = Product::join('sizes', 'products.id_size', '=', 'sizes.id')->
+            select('sizes.name', 'products.id')->where(['title' => $product->title, 'id_color' => $product->id_color])->get();
+
+        $colors = Product::join('colors', 'products.id_color', '=', 'colors.id')->
+            select('colors.name', 'products.id')->where(['title' => $product->title])->get();
+
+        $currentColor = Product::join('colors', 'products.id_color', '=', 'colors.id')->
+            select('colors.name')->where(['title' => $product->title, 'id_color' => $product->id_color])->distinct()->get();
+
+        return view('products.show')->with(['product' => $product,
+                                            'sizes' => $sizes,
+                                            'colors' => $colors->unique('name'),
+                                            'currentColor' => $currentColor[0]['name']]);
+    }
+
     public function getAddToCart(Request $request, $id) {
 
         $product = Product::find($id);
@@ -75,7 +99,6 @@ class ProductController extends Controller
     }
 
     public function postCheckout(Request $request) {
-
         if(!Session::has('cart')) {
             return redirect()->route('product.shoppingCart');
         }
@@ -87,43 +110,11 @@ class ProductController extends Controller
             $order->cart = serialize($cart);    //good method for storing object in database, reverse is method unserialize
             $order->address = $request->input('address');
             $order->name = $request->input('name');
-            //for payment id
-            //$order->payment_id = $charge->idate
-            Auth::user()->orders()->save($order);
+            Auth::user()->orders()->save($order);   //For logged user save specific order
         } catch(Exception $e) {
             return redirect()->route('checkout')->with('error', $e->getMessage());
         }
         Session::forget('cart');
         return redirect()->route('home')->with('success', 'Successfully purchased products');
-        // Stripe::setApiKey("sk_test_XdAOrztb8gm49OInHb6elINB");
-        // $customer = Customer::create(array(
-        //     'email' => $request->stripeEmail,
-        //     'source'  => $request->stripeToken
-        // ));
-        // $charge = Charge::create(array(
-        //     'customer' => $customer->id,
-        //     'amount'   => $cart->totalPrice,
-        //     'currency' => 'usd'
-        // ));
-        //Session::forget('cart');
-        //return redirect()->route('home')->with('success', 'Successfully purchased products');
-        // if(!Session::has('cart')) {
-        //     return redirect()->route('product.shoppingCart');
-        // }
-        // $oldCart = Session::get('cart');
-        // $cart = new Cart($oldCart);
-        // Stripe::setApiKey('sk_test_XdAOrztb8gm49OInHb6elINB');
-        // try {
-        //     Charge::create(array(
-        //         "amount" => $cart->totalPrice,
-        //         "currency" => "usd",
-        //         "source" => $request->input('stripeToken'),
-        //         "description" => "Test Charge"
-        //       ));
-        // } catch(\Exception $e) {
-        //     return redirect()->route('checkout')->with('error', $e->getMessage());
-        // }
-        // Session::forget('cart');
-        //return redirect()->route('product.index')->with('success', 'Successfully purchased products');
     }
 }

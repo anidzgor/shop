@@ -66,8 +66,8 @@
                     <a class="nav-link" href="/">Home</a>
                   </li>
 
-                  <li class="{{Request::is('cars') ? 'active': '' }}">
-                    <a class="nav-link" href="/cars">Products</a>
+                  <li class="{{Request::is('products') ? 'active': '' }}">
+                    <a class="nav-link" href="/products">Products</a>
                   </li>
         
                   <li class="{{Request::is('about') ? 'active': '' }}">

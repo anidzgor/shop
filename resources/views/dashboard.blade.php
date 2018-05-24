@@ -22,7 +22,7 @@
                     <strong>Total Price: {{ $order->cart->totalPrice }}</strong>
                 </div>
             </div>
-            @endforeach
+            @endforeach   
         </div>
     </div>
 @endsection

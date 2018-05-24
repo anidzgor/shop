@@ -70,7 +70,7 @@
   padding-right: 0;
 }
 
-hr {
+hr{
   border: 1;
   height: 1px;
   background-image: linear-gradient(180deg, rgba(240, 21, 21, 0), rgba(240, 21, 21, 0.75) rgba(0, 0, 0, 0));
@@ -105,21 +105,15 @@ ul.dropdown-menu{
   color: #333;
 }
 
-
-// .card img {
-//   width: 100%;
-//   height: 60%;
-// }
+.divideElement { 
+  border-top: 1px solid #8c8b8b;
+}
 
 .thumbnail {
   padding-top: 2em;
   padding-bottom: 2em;
   margin-bottom: 1em;
-}
-
-.price {
-  font-weight: bold;
-  font-size: 1.5em;
+  //height: 30em;
 }
 
 .thumbnail .description {
@@ -127,14 +121,67 @@ ul.dropdown-menu{
 }
 
 .thumbnail img {
-  max-height: 150px;
+  max-height: 15em;
+  max-width: 10em;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.caption {
-  margin-left: 1em;
+.row-images.card {
+  width: 15em;
+  height: 28em;
+  margin-top: 1em;
+  margin-left: 4em;
+  margin-right: 1em;
+}
+
+.row-images img {
+  max-height: 20em;
+}
+
+.row-products.card {
+  width: 15em;
+  height: 28em;
+  margin-top: 1em;
+  margin-left: 4em;
+  margin-right: 1em;
+  display: inline-block;
+}
+
+.row-products img {
+  max-height: 20em;
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  //transform: scale(1, 1.3);
+  //transition-duration: 0.5s;
+  opacity: 0.5;
+}
+
+.price {
+  font-size: 1.2em;
+}
+
+.caption a {
+  color: black;
+}
+
+.caption a:hover {
+  color: #138496;
+  text-decoration: none;
+}
+
+.show-more {
+  text-decoration: underline;
+}
+
+.show-more:hover {
+  color:black;
 }
 
 .container-fluid.no-padding {
@@ -174,15 +221,45 @@ ul.dropdown-menu{
   color: green;
 }
 
+.dropdown-menu.size {
+  background-color: #fff;
+}
+
+.dropdown-menu.size a:hover {
+  background-color: rgb(3, 3, 3);
+  color: #fff;
+}
+
 .carousel-indicators li {
   width: 10px;
   height: 10px;
   border-radius: 100%;
 }
 
+.target {
+  width: 5em;
+}
+
+.targetColors {
+  width: 7em;
+}
+
+.custom-font {
+  font-family: "new century schoolbook";
+}
+
 @media screen and (max-width: 770px) {
 
   .first-navbar ul.first-right-side li {
     padding-top: 0.5em;
+  }
+
+  .row-images.card {
+    margin-left: 4em;
+    margin-right: 4em;  
+  }
+
+  .zoom:hover {
+    transform: scale(1, 1);
   }
 }

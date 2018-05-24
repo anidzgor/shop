@@ -13,8 +13,6 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/custom.js') }}" defer></script>
-        <script src="https://checkout.stripe.com/checkout.js"></script>
-        <script src="https://js.stripe.com/v3/"></script>
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -32,7 +30,9 @@
                 @if(Request::is('/'))
                     @include('inc.slider')
                 @endif
-                @if(!Request::is('/'))
+                @if(Request::is('/') || Request::is('products'))
+                    @yield('content')
+                @else
                     <div class="row">
                         <div class="col-md-8 col-lg-8">
                             @include('inc.messages')
@@ -41,9 +41,7 @@
                         <div class="col-md-4 col-lg-4">
                             @include('inc.sidebar')
                         </div>
-                    </div>
-                @else
-                    @yield('content')
+                    </div>             
                 @endif
             </div>
             <footer id="footer" class="text-center">

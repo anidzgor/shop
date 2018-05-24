@@ -3,6 +3,65 @@
 @section('content')
 
 {{-- Products --}}
+<h3 class="text-center mt-5">NEWEST PRODUCTS</h3>
+<hr>
+<div class="row justify-content-center">
+
+        @if(Session::has('success'))
+           <div class="row">
+               <div class="col-sm-6 col-md-4 offset-md-4 offset-sm-3 mt-1">
+                   <div id="charge-message" class="alert alert-success text-center">
+                       {{ Session::get('success')}}
+                   </div>
+               </div>
+          </div>
+        @endif
+
+        @foreach($productsLatest as $product)
+        <div class="row">
+                <div class="row-images card">
+                    <a href="{{ route('products.show', ['id' => $product->id]) }}" ><img src="{{ url('/images/products/' . $product->imagePath ) }}"
+                      class="card-img-top zoom img-responsive mb-2"></a>
+                    <div class="caption text-center">
+                        <h4 class="custom-font">{{ $product->title }}</h4>
+                        <div class="price">{{ $product->price }} PLN</div>
+                        <a href="{{ route('products.show', ['id' => $product->id]) }}"><h3 class="text-center price show-more mt-1">Show more</h3></a>
+                    </div>
+                </div>
+        </div>
+        @endforeach
+</div>
+
+{{-- Products --}}
+<h3 class="text-center mt-5">BESTSELLER PRODUCTS</h3>
+<hr>
+<div class="row justify-content-center">
+        @if(Session::has('success'))
+           <div class="row">
+               <div class="col-sm-6 col-md-4 offset-md-4 offset-sm-3 mt-1">
+                   <div id="charge-message" class="alert alert-success text-center">
+                       {{ Session::get('success')}}
+                   </div>
+               </div>
+          </div>
+        @endif
+
+        @foreach($productBestSeller as $product)
+        <div class="row">
+                <div class="row-images card">
+                    <a href="{{ route('products.show', ['id' => $product->id]) }}" ><img src="{{ url('/images/products/' . $product->imagePath ) }}"
+                      class="card-img-top zoom img-responsive mb-2"></a>
+                    <div class="caption text-center">
+                        <h4 class="custom-font">{{ $product->title }}</h4>
+                        <div class="price">{{ $product->price }} PLN</div>
+                        <a href="{{ route('products.show', ['id' => $product->id]) }}"><h3 class="text-center price show-more mt-1">Show more</h3></a>
+                    </div>
+                </div>
+        </div>
+        @endforeach
+</div>
+
+{{-- Products
 <h1 class="text-center mt-5">Products</h1>
 <hr>
 <div class="row justify-content-center">
@@ -31,15 +90,15 @@
             @foreach($productChunk as $product)
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail card">
-                    <img src="{{ $product->imagePath }}" alt="Book of Harry Potter" 
-                      class="img-responsive mb-2">
+                    <a href="{{ route('products.show', ['id' => $product->id]) }}" ><img src="{{ url('/images/products/' . $product->imagePath ) }}"
+                      class="zoom img-responsive mb-2"></a>
                     <div class="caption">
                         <h3 class="font-weight-bold">{{ $product->title }}</h3>
-                        <p class="description">{{ $product->description }}</p>
-                          <div class="clearfix">
-                            <div class="pull-left price">{{ $product->price }}</div>
+                        {{-- <p class="description">{{ $product->description }}</p> --}}
+                        {{-- <div class="clearfix">
+                            <div class="pull-left price">{{ $product->price }}</div> --}}
                             {{-- <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right mr-3" role="button">Add to Cart</a> --}}
-                            <a href="/add-to-cart/{{ $product->id }}" class="btn btn-success pull-right mr-3" role="button">Add to Cart</a>
+                            {{-- <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right mr-3" role="button">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +108,7 @@
         @endforeach
     </div> 
     <div class="col"></div>
-</div>
+</div> --}}
 
 <!-- About us -->
 <div class="container-fluid mt-5">

@@ -4,14 +4,14 @@
     @if(Session::has('cart'))
         <div class="row">
             <div class="col-sm-6 col-md-6 offset-md-3 offset-sm-3">
-                <ul class="list-group">
+                <ul class="list-group mt-5">
                     @foreach($products as $product)
                         <li class="list-group-item">
-                            <span class="badge badge-warning badge-pill pull-right">{{ $product['qty'] }}</span>
+                            <span class="badge badge-warning badge-pill pull-right mt-2">Amount: {{ $product['qty'] }}</span>
                             <strong>{{ $product['item']['title'] }}</strong>
-                            <span class="badge badge-success">{{ $product['price'] }}</span>
+                            <span class="badge badge-success badge-pill pull-right mt-2 mr-1">Price: {{ $product['price'] }}</span>
                             <div class="btn-group" role="group">
-                                <button class="btn btn-info dropdown-toggle ml-2" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
+                                <button class="badge-info badge-pill dropdown-toggle ml-2" type="button" data-toggle="dropdown">Delete<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('product.reduceByOne', ['id' => $product['item']['id']]) }}">Reduce by 1</a></li>
                                     <li><a class="dropdown-item" href="{{ route('product.removeItem', ['id' => $product['item']['id']]) }}">Reduce All</a></li>
